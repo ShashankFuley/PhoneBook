@@ -13,8 +13,8 @@ public interface IContactService {
 	List<Contact> findAllContacts();
 	
 	//Method to find contact by id
-	Contact findById(Long id);
+	Contact findContactById(Long id);
 	
 	//Method to delete contact
-	boolean deleteContact(Long id);
+	boolean deleteContactById(Long id);
 }
