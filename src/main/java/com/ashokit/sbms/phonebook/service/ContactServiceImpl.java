@@ -27,7 +27,7 @@ public class ContactServiceImpl implements IContactService {
 			Contact savedContact = contactRepository.save(contact);
 			return savedContact != null;
 		}catch(Exception e){
-			throw new PhoneBookException("OOPS!! There was error while saving the contact.");
+			throw new PhoneBookException("OOPS!! There was an error while saving the contact.");
 		}
 	}
 
@@ -55,7 +55,7 @@ public class ContactServiceImpl implements IContactService {
 			contactRepository.deleteById(id);
 			return true;
 		}catch(Exception e) {
-			throw new PhoneBookException("OOPS!! There was error while deleting the contact.");
+			throw new PhoneBookException("OOPS!! There was an error while deleting the contact.");
 		}
 	}
 
