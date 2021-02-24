@@ -29,7 +29,7 @@ public class ContactServiceImpl implements IContactService {
 		logger.debug("**** saveContact() - Execution Started ****");
 		try {
 			Contact savedContact = contactRepository.save(contact);
-			if(savedContact == null) {
+			if(savedContact != null) {
 				logger.info("**** saveContact() - Contact Saved ****");
 				return true;
 			}
