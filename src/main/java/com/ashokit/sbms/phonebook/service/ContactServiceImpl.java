@@ -63,7 +63,8 @@ public class ContactServiceImpl implements IContactService {
 			}
 		}catch(Exception e) {
 			logger.error("** Exception Occured : ** " + e.getMessage());
-			throw new NoSuchContactFound("No Contact found with id:- "+id);
+			throw new NoSuchContactFound("OOPs!! there was an error while retriving contact with id:-"+id+
+					".Check if the arguments are correct.");
 		}
 		logger.info("**** findContactById() - Contact Not Found ****");
 		logger.debug("**** findContactById() - Execution Ended ****");
@@ -82,7 +83,7 @@ public class ContactServiceImpl implements IContactService {
 			logger.error("** Exception Occured : ** " + e.getMessage());
 			logger.info("**** deleteContactById() - Contact Not Found ****");
 			logger.debug("**** deleteContactById() - Execution Ended ****");
-			throw new PhoneBookException("OOPS!! There was an error while deleting the contact.");
+			throw new PhoneBookException("OOPS!! There was an error while deleting the contact with id:-"+id+".");
 		}
 	}
 
