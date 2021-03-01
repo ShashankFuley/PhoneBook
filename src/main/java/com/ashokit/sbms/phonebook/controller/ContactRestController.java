@@ -32,11 +32,12 @@ public class ContactRestController {
 	
 	//Method to get Contact
 	@ApiOperation(value = "To get contact by id")
-	@GetMapping("/contact/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Contact> getContactById(@PathVariable String id){
 		Long contactId = Long.parseLong(id);
 		Contact contact = this.contactService.findContactById(contactId);
-		return ResponseEntity.ok(contact);
+		if(contact != null) return ResponseEntity.ok(contact);
+		else return ResponseEntity.status(204).body(null);
 	}
 	
 	//Method to create Contact
@@ -53,14 +54,14 @@ public class ContactRestController {
 	@PutMapping
 	public ResponseEntity<String> updateContact(@RequestBody Contact contact){
 		boolean saveContact = this.contactService.saveContact(contact);
-		if(saveContact) return ResponseEntity.status(201).body("Contact updated successfully.");
-		else return ResponseEntity.status(400).body("Contact couldn't be saved.");
+		if(saveContact) return ResponseEntity.status(200).body("Contact updated successfully.");
+		else return ResponseEntity.status(204).body("Contact couldn't be saved.");
 	}
 	
 	//Method to delete Contact
 	@ApiOperation(value = "To delete contact")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteContact(Long id){
+	public ResponseEntity<String> deleteContact(@PathVariable Long id){
 		boolean deleteContactById = this.contactService.deleteContactById(id);
 		if(deleteContactById) return ResponseEntity.status(200).body("Contact deleted successfully.");
 		else return ResponseEntity.status(400).body("Contact couldn't be deleted.");
