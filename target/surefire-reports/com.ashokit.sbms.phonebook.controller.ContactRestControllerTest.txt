@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.ashokit.sbms.phonebook.controller.ContactRestControllerTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.039 s - in com.ashokit.sbms.phonebook.controller.ContactRestControllerTest

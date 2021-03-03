@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ContactRestController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PhoneBook</a> &gt; <a href="index.source.html" class="el_package">com.ashokit.sbms.phonebook.controller</a> &gt; <span class="el_source">ContactRestController.java</span></div><h1>ContactRestController.java</h1><pre class="source lang-java linenums">package com.ashokit.sbms.phonebook.controller;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ashokit.sbms.phonebook.constants.PhoneBookConstants;
+import com.ashokit.sbms.phonebook.entity.Contact;
+import com.ashokit.sbms.phonebook.properties.PhoneBookProperties;
+import com.ashokit.sbms.phonebook.service.ContactServiceImpl;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@RestController
+@RequestMapping(&quot;/api/phonebook&quot;)
+@Api(value = &quot;PhoneBookRestController&quot;)
+public class ContactRestController {
+
+	private ContactServiceImpl contactService;
+	
+	private PhoneBookProperties phoneBookProperties;
+	
+	//Constructor for constructor injection
+<span class="fc" id="L33">	ContactRestController(ContactServiceImpl contactService , PhoneBookProperties phoneBookProperties){</span>
+<span class="fc" id="L34">		this.contactService = contactService;</span>
+<span class="fc" id="L35">		this.phoneBookProperties = phoneBookProperties;</span>
+<span class="fc" id="L36">	}</span>
+	
+	//Method to get Contact
+	@ApiOperation(value = &quot;To get contact by id&quot;)
+	@GetMapping(&quot;/{id}&quot;)
+	public ResponseEntity&lt;Contact&gt; getContactById(@PathVariable String id){
+<span class="fc" id="L42">		Long contactId = Long.parseLong(id);</span>
+<span class="fc" id="L43">		Contact contact = this.contactService.findContactById(contactId);</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">		if(contact != null) return ResponseEntity.ok(contact);</span>
+<span class="fc" id="L45">		else return ResponseEntity.status(204).body(null);</span>
+	}
+	
+	//Method to create Contact
+	@ApiOperation(value = &quot;To save contact&quot;)
+	@PostMapping
+	public ResponseEntity&lt;String&gt; createContact(@RequestBody Contact contact){
+<span class="fc" id="L52">		boolean saveContact = this.contactService.saveContact(contact);</span>
+		final String message;
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		if(saveContact) {</span>
+<span class="fc" id="L55">			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_CREATED); </span>
+<span class="fc" id="L56">			return ResponseEntity.status(201).body(message);</span>
+		}
+		else {
+<span class="fc" id="L59">			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_NOT_CREATED);</span>
+<span class="fc" id="L60">			return ResponseEntity.status(400).body(&quot;Contact couldn't be created.&quot;);</span>
+		}
+	}
+	
+	//Method to update Contact
+	@ApiOperation(value = &quot;To update contact&quot;)
+	@PutMapping
+	public ResponseEntity&lt;String&gt; updateContact(@RequestBody Contact contact){
+<span class="fc" id="L68">		boolean saveContact = this.contactService.saveContact(contact);</span>
+		final String message;
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		if(saveContact) { </span>
+<span class="fc" id="L71">			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_UPDATED);</span>
+<span class="fc" id="L72">			return ResponseEntity.status(200).body(message);</span>
+		}
+		else {
+<span class="fc" id="L75">			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_NOT_UPDATED);</span>
+<span class="fc" id="L76">			return ResponseEntity.status(204).body(message);</span>
+		}
+	}
+	
+	//Method to delete Contact
+	@ApiOperation(value = &quot;To delete contact&quot;)
+	@DeleteMapping(&quot;/{id}&quot;)
+	public ResponseEntity&lt;String&gt; deleteContact(@PathVariable Long id){
+<span class="fc" id="L84">		boolean deleteContactById = this.contactService.deleteContactById(id);</span>
+		final String message;
+<span class="fc bfc" id="L86" title="All 2 branches covered.">		if(deleteContactById) {</span>
+<span class="fc" id="L87">			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_DELETED);</span>
+<span class="fc" id="L88">			return ResponseEntity.status(200).body(message);</span>
+		}
+		else {
+<span class="fc" id="L91">			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_NOT_DELETED);</span>
+<span class="fc" id="L92">			return ResponseEntity.status(400).body(message);</span>
+		}
+	}
+	
+	//Method to get all contact
+	@ApiOperation(value = &quot;To get all the contact&quot;)
+	@GetMapping(&quot;/all&quot;)
+	public ResponseEntity&lt;List&lt;Contact&gt;&gt; getAllContact(){
+<span class="fc" id="L100">		List&lt;Contact&gt; findAllContacts = this.contactService.findAllContacts();</span>
+<span class="fc" id="L101">		return ResponseEntity.ok(findAllContacts);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

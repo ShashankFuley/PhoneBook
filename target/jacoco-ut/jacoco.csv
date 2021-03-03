@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+PhoneBook,com.ashokit.sbms.phonebook.exception,GlobalExceptionHandlerController,12,3,0,0,2,1,2,1,2,1
+PhoneBook,com.ashokit.sbms.phonebook.exception,NoSuchContactFound,0,20,0,0,0,4,0,2,0,2
+PhoneBook,com.ashokit.sbms.phonebook.exception,PhoneBookException,0,20,0,0,0,4,0,2,0,2
+PhoneBook,com.ashokit.sbms.phonebook.configuration,PhoneBookConfiguration,0,15,0,0,0,4,0,2,0,2
+PhoneBook,com.ashokit.sbms.phonebook.service,ContactServiceImpl,0,196,0,4,0,43,0,7,0,5
+PhoneBook,com.ashokit.sbms.phonebook.controller,ContactRestController,0,128,0,8,0,28,0,10,0,6
