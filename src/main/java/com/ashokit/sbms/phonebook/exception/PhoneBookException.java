@@ -8,13 +8,14 @@ public class PhoneBookException extends RuntimeException{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String message;
+	private final String message;
 	
 	public PhoneBookException(String message) {
 		this.message = message;
 	}
 	
+	@Override
 	public String getMessage() {
-		return this.message +" "+ new Date();
+		return this.message+" "+new Date();
 	}
 }

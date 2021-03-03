@@ -76,8 +76,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -122,7 +126,7 @@
                             <dataFile>target/jacoco.exec</dataFile>
                             <!-- Sets the output directory for the code coverage report. -->
                             <outputDirectory>target/jacoco-ut</outputDirectory>
-  </configuration>
+  				</configuration>
                     </execution>
                 </executions>
                 <configuration>
@@ -130,12 +134,19 @@
 		                    	<exclude>**/com/ashokit/sbms/phonebook/entity/**</exclude>
 		                    	<exclude>**/com/ashokit/sbms/phonebook/PhoneBookApplication.class</exclude>
 		                    	<exclude>**/com/ashokit/sbms/phonebook/ServletInitializer.class</exclude>
+		                    	<exclude>**/com/ashokit/sbms/phonebook/properties/**</exclude>
+		                    	<exclude>**/com/ashokit/sbms/phonebook/constants/**</exclude>
                     		</excludes>
                     <systemPropertyVariables>
                         <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+            <plugin>
+				 <groupId>org.sonarsource.scanner.maven</groupId>
+				 <artifactId>sonar-maven-plugin</artifactId>
+				 <version>3.4.0.905</version>
+			</plugin>
 		</plugins>
 	</build>
 

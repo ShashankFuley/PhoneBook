@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandlerController {
 
 	@ExceptionHandler(value = NoSuchContactFound.class)
-	public ResponseEntity<?> noSuchContactFoundExceptionHandler(NoSuchContactFound error) {
+	public ResponseEntity<String> noSuchContactFoundExceptionHandler(NoSuchContactFound error) {
 		return ResponseEntity.status(500).body(error.getMessage());
 	}
 	
 	@ExceptionHandler(value=PhoneBookException.class)
-	public ResponseEntity<?> phoneBookExceptionHandler(PhoneBookException error){
+	public ResponseEntity<String> phoneBookExceptionHandler(PhoneBookException error){
 		return ResponseEntity.status(500).body(error.getMessage());
 	}
 	

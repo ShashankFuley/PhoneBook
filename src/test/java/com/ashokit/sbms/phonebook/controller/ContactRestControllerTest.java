@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.ashokit.sbms.phonebook.entity.Contact;
+import com.ashokit.sbms.phonebook.properties.PhoneBookProperties;
 import com.ashokit.sbms.phonebook.service.ContactServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -26,6 +27,9 @@ class ContactRestControllerTest {
 
 	@MockBean
 	private ContactServiceImpl contactService;
+	
+	@MockBean
+	private PhoneBookProperties phoneBookProperties;
 	
 	@Autowired
 	private MockMvc mockMvc;

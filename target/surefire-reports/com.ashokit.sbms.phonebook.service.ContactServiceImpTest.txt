@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.ashokit.sbms.phonebook.service.ContactServiceImpTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.763 s - in com.ashokit.sbms.phonebook.service.ContactServiceImpTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.455 s - in com.ashokit.sbms.phonebook.service.ContactServiceImpTest

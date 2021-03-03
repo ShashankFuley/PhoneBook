@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ashokit.sbms.phonebook.constants.PhoneBookConstants;
 import com.ashokit.sbms.phonebook.entity.Contact;
+import com.ashokit.sbms.phonebook.properties.PhoneBookProperties;
 import com.ashokit.sbms.phonebook.service.ContactServiceImpl;
 
 import io.swagger.annotations.Api;
@@ -25,17 +27,20 @@ public class ContactRestController {
 
 	private ContactServiceImpl contactService;
 	
+	private PhoneBookProperties phoneBookProperties;
+	
 	//Constructor for constructor injection
-	ContactRestController(ContactServiceImpl contactService){
+	ContactRestController(ContactServiceImpl contactService , PhoneBookProperties phoneBookProperties){
 		this.contactService = contactService;
+		this.phoneBookProperties = phoneBookProperties;
 	}
 	
 	//Method to get Contact
 	@ApiOperation(value = "To get contact by id")
 	@GetMapping("/{id}")
-	public ResponseEntity<Contact> getContactById(@PathVariable String id){
-		Long contactId = Long.parseLong(id);
-		Contact contact = this.contactService.findContactById(contactId);
+	public ResponseEntity<Contact> getContactById(@PathVariable final String id){
+		final Long contactId = Long.parseLong(id);
+		final Contact contact = this.contactService.findContactById(contactId);
 		if(contact != null) return ResponseEntity.ok(contact);
 		else return ResponseEntity.status(204).body(null);
 	}
@@ -43,19 +48,33 @@ public class ContactRestController {
 	//Method to create Contact
 	@ApiOperation(value = "To save contact")
 	@PostMapping
-	public ResponseEntity<String> saveContact(@RequestBody Contact contact){
-		boolean saveContact = this.contactService.saveContact(contact);
-		if(saveContact) return ResponseEntity.status(201).body("Contact created successfully.");
-		else return ResponseEntity.status(400).body("Contact couldn't be created.");
+	public ResponseEntity<String> createContact(@RequestBody final Contact contact){
+		final boolean saveContact = this.contactService.saveContact(contact);
+		final String message;
+		if(saveContact) {
+			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_CREATED); 
+			return ResponseEntity.status(201).body(message);
+		}
+		else {
+			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_NOT_CREATED);
+			return ResponseEntity.status(400).body("Contact couldn't be created.");
+		}
 	}
 	
 	//Method to update Contact
 	@ApiOperation(value = "To update contact")
 	@PutMapping
-	public ResponseEntity<String> updateContact(@RequestBody Contact contact){
-		boolean saveContact = this.contactService.saveContact(contact);
-		if(saveContact) return ResponseEntity.status(200).body("Contact updated successfully.");
-		else return ResponseEntity.status(204).body("Contact couldn't be saved.");
+	public ResponseEntity<String> updateContact(@RequestBody final Contact contact){
+		final boolean saveContact = this.contactService.saveContact(contact);
+		final String message;
+		if(saveContact) { 
+			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_UPDATED);
+			return ResponseEntity.status(200).body(message);
+		}
+		else {
+			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_NOT_UPDATED);
+			return ResponseEntity.status(204).body(message);
+		}
 	}
 	
 	//Method to delete Contact
@@ -63,15 +82,22 @@ public class ContactRestController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteContact(@PathVariable Long id){
 		boolean deleteContactById = this.contactService.deleteContactById(id);
-		if(deleteContactById) return ResponseEntity.status(200).body("Contact deleted successfully.");
-		else return ResponseEntity.status(400).body("Contact couldn't be deleted.");
+		final String message;
+		if(deleteContactById) {
+			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_DELETED);
+			return ResponseEntity.status(200).body(message);
+		}
+		else {
+			message = this.phoneBookProperties.getMessages().get(PhoneBookConstants.CONTACT_NOT_DELETED);
+			return ResponseEntity.status(400).body(message);
+		}
 	}
 	
 	//Method to get all contact
 	@ApiOperation(value = "To get all the contact")
 	@GetMapping("/all")
 	public ResponseEntity<List<Contact>> getAllContact(){
-		List<Contact> findAllContacts = this.contactService.findAllContacts();
+		final List<Contact> findAllContacts = this.contactService.findAllContacts();
 		return ResponseEntity.ok(findAllContacts);
 	}
 }

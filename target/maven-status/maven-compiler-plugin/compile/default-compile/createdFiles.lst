@@ -1,7 +1,10 @@
 com\ashokit\sbms\phonebook\service\ContactServiceImpl.class
+com\ashokit\sbms\phonebook\properties\PhoneBookProperties.class
 com\ashokit\sbms\phonebook\ServletInitializer.class
 com\ashokit\sbms\phonebook\service\IContactService.class
 com\ashokit\sbms\phonebook\controller\ContactRestController.class
+com\ashokit\sbms\phonebook\constants\PhoneBookConstants.class
+META-INF\spring-configuration-metadata.json
 com\ashokit\sbms\phonebook\PhoneBookApplication.class
 com\ashokit\sbms\phonebook\exception\PhoneBookException.class
 com\ashokit\sbms\phonebook\exception\GlobalExceptionHandlerController.class

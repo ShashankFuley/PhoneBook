@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 <span class="fc" id="L8">public class GlobalExceptionHandlerController {</span>
 
 	@ExceptionHandler(value = NoSuchContactFound.class)
-	public ResponseEntity&lt;?&gt; noSuchContactFoundExceptionHandler(NoClassDefFoundError error) {
+	public ResponseEntity&lt;?&gt; noSuchContactFoundExceptionHandler(NoSuchContactFound error) {
 <span class="nc" id="L12">		return ResponseEntity.status(500).body(error.getMessage());</span>
 	}
 	

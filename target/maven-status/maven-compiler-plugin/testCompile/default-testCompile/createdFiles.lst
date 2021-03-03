@@ -1,2 +1,3 @@
 com\ashokit\sbms\phonebook\controller\ContactRestControllerTest.class
 com\ashokit\sbms\phonebook\PhoneBookApplicationTests.class
+com\ashokit\sbms\phonebook\service\ContactServiceImpTest.class
