@@ -6,14 +6,15 @@ public class NoSuchContactFound extends RuntimeException{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String message;
+	private final String message;
 	
 <span class="fc" id="L11">	public NoSuchContactFound(String message) {</span>
 <span class="fc" id="L12">		this.message = message;</span>
 <span class="fc" id="L13">	}</span>
 	
+	@Override
 	public String getMessage() {
-<span class="fc" id="L16">		return message +&quot; &quot;+ new Date();</span>
+<span class="fc" id="L17">		return this.message+&quot; &quot;+ new Date();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

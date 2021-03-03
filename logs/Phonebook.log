@@ -1,35 +1,22 @@
-2021-02-28 23:29:01 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-02-28 23:29:03 INFO Initializing ExecutorService 'applicationTaskExecutor'
-2021-02-28 23:29:04 INFO Context refreshed
-2021-02-28 23:29:04 INFO Found 1 custom documentation plugin(s)
-2021-02-28 23:29:04 INFO Scanning for api listing references
-2021-02-28 23:29:05 INFO Started PhoneBookApplicationTests in 19.531 seconds (JVM running for 43.841)
-2021-02-28 23:29:06 ERROR ** Exception Occured : ** null Sun Feb 28 23:29:06 IST 2021
-2021-02-28 23:29:06 ERROR ** Exception Occured : ** null
-2021-02-28 23:29:06 INFO **** saveContact() - Contact Not Saved ****
-2021-02-28 23:29:06 INFO **** deleteContactById() - Execution Started ****
-2021-02-28 23:29:06 ERROR ** Exception Occured : ** null
-2021-02-28 23:29:06 INFO **** deleteContactById() - Contact Not Found ****
-2021-02-28 23:29:06 INFO **** findContactById() - Contact Not Found ****
-2021-02-28 23:29:06 INFO **** deleteContactById() - Execution Started ****
-2021-02-28 23:29:06 INFO **** deleteContactById() - Contact Deleted ****
-2021-02-28 23:29:06 INFO **** findAllContacts() - Execution Ended ****
-2021-02-28 23:29:06 INFO **** saveContact() - Contact Saved ****
-2021-02-28 23:29:06 INFO **** findContactById() - Contact Found ****
-2021-02-28 23:29:06 INFO Shutting down ExecutorService 'applicationTaskExecutor'
-2021-02-28 23:29:06 INFO Shutting down ExecutorService 'applicationTaskExecutor'
-2021-02-28 23:29:06 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-02-28 23:29:07 INFO HikariPool-1 - Shutdown initiated...
-2021-02-28 23:29:07 INFO HikariPool-1 - Shutdown completed.
-2021-02-28 23:37:52 ERROR ** Exception Occured : ** null Sun Feb 28 23:37:52 IST 2021
-2021-02-28 23:37:52 ERROR ** Exception Occured : ** null
-2021-02-28 23:37:52 INFO **** saveContact() - Contact Not Saved ****
-2021-02-28 23:37:52 INFO **** deleteContactById() - Execution Started ****
-2021-02-28 23:37:52 ERROR ** Exception Occured : ** null
-2021-02-28 23:37:52 INFO **** deleteContactById() - Contact Not Found ****
-2021-02-28 23:37:52 INFO **** findContactById() - Contact Not Found ****
-2021-02-28 23:37:52 INFO **** deleteContactById() - Execution Started ****
-2021-02-28 23:37:52 INFO **** deleteContactById() - Contact Deleted ****
-2021-02-28 23:37:52 INFO **** findAllContacts() - Execution Ended ****
-2021-02-28 23:37:52 INFO **** saveContact() - Contact Saved ****
-2021-02-28 23:37:52 INFO **** findContactById() - Contact Found ****
+2021-03-03 08:16:47 INFO Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-03 08:16:48 INFO Context refreshed
+2021-03-03 08:16:48 INFO Found 1 custom documentation plugin(s)
+2021-03-03 08:16:48 INFO Scanning for api listing references
+2021-03-03 08:16:49 INFO Started PhoneBookApplicationTests in 17.634 seconds (JVM running for 40.226)
+2021-03-03 08:16:49 ERROR **** findContactById() - Exception Occured : **** null Wed Mar 03 08:16:49 IST 2021
+2021-03-03 08:16:49 ERROR **** saveContact() - Exception Occured : **** null
+2021-03-03 08:16:49 INFO **** saveContact() - Contact Not Saved ****
+2021-03-03 08:16:49 INFO **** deleteContactById() - Execution Started ****
+2021-03-03 08:16:49 ERROR **** deleteContactById() - Exception Occured : **** null
+2021-03-03 08:16:49 INFO **** deleteContactById() - Contact Not Found ****
+2021-03-03 08:16:49 INFO **** findContactById() - Contact Not Found ****
+2021-03-03 08:16:49 INFO **** deleteContactById() - Execution Started ****
+2021-03-03 08:16:49 INFO **** deleteContactById() - Contact Deleted ****
+2021-03-03 08:16:49 INFO **** findAllContacts() - Execution Ended ****
+2021-03-03 08:16:49 INFO **** saveContact() - Contact Saved ****
+2021-03-03 08:16:49 INFO **** findContactById() - Contact Found ****
+2021-03-03 08:16:49 INFO Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-03 08:16:49 INFO Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-03 08:16:49 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-03 08:16:50 INFO HikariPool-1 - Shutdown initiated...
+2021-03-03 08:16:50 INFO HikariPool-1 - Shutdown completed.

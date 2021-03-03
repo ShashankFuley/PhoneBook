@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: liverpool
+    url: jdbc:mysql://localhost:3306/ashok_it?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
+
+phonebook:
+  messages:
+    contactCreated : Contact Created Successfully
+    contactNotCreated : Contact Couldn't Be Created
+    contactDeleted : Contact Deleted Successfully
+    contactNotDeleted : Contact Cotact Couldn't Be Deleted
+    contactUpdated : Contact Updated Successfully
+    contactNotUpdated : Contact Couldn't Be Updated
+    saveContactExceptionMessage : OOPS!! There was an error while saving the contact.
+    findContactByIdExceptionMessage : OOPs!! there was an error while retriving contact with id:-
+    deleteContactByIdExceptionMessage : OOPS!! There was an error while deleting the contact with id:-
